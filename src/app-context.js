@@ -28,6 +28,18 @@ export const AppContext = ({ children }) => {
     })
   }
 
+  const removeAppliedFilters = (filterType) => {
+    let appliedFiltersUpdated = [...(filters?.appliedFilters || [])].filter(i => i.filterType !== filterType);
+    setFilters(prev => {
+      return {
+        ...prev,
+        appliedFilters: appliedFiltersUpdated
+      }
+    })
+  }
+
+  
+
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
@@ -39,7 +51,17 @@ export const AppContext = ({ children }) => {
   }, [isDarkMode]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setToastConfig, filters, updateAppliedFilters }}>
+    <ThemeContext.Provider value={{ 
+        // theme
+        theme, 
+        toggleTheme, 
+        // toast
+        setToastConfig, 
+        // filters
+        filters, 
+        updateAppliedFilters, 
+        removeAppliedFilters 
+      }}>
       {children}
       <Toast
         isOpen={toastConfig.isOpen}

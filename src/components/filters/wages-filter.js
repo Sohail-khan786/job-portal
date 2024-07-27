@@ -6,7 +6,8 @@ import InputText from "../input-text";
 import { FILTERS_TYPE } from "../../app-contants";
 
 const WagesFilter = ({
-    onApplyClick = () => {}
+    onApplyClick = () => {},
+    onRemoveClick = () => {}
 }) => {
   const { theme } = useAppContext();
   const [wageValue, setWageValue] = useState("");
@@ -25,6 +26,8 @@ const WagesFilter = ({
                 />
             </div>
             <ButtonCustom text="Apply" onClick={() => onApplyClick(FILTERS_TYPE.WAGE,wageValue)} />
+            <br/>
+            <ButtonCustom text="Remove" onClick={() => onRemoveClick(FILTERS_TYPE.WAGE)} />
         </div>
     </div>
   );
