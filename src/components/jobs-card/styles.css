@@ -1,0 +1,33 @@
+[data-theme="dark"] {
+  --border-color: #ffffff;
+  --background-highlight-color: #ffffff;
+  --text-highlight-color: #333333;
+}
+
+/* Dark mode styles */
+[data-theme="light"] {
+  --border-color: #333333;
+  --background-highlight-color: #333333;
+  --text-highlight-color: #ffffff;
+}
+
+ 
+
+.jobsCard {
+    border: 1px solid var(--border-color);
+    padding: 5px 10px 20px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.skillsBox {
+  margin-right: 5px;
+}
+
+.skillsActive {
+  background: var(--background-highlight-color);
+  border-radius: 5px;
+  color: var(--text-highlight-color);
+  padding: 0px 3px;
+}
+

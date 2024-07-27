@@ -15,3 +15,6 @@ export const ROUTES = {
 };
 
 
+export const DATA_SOURCE = {
+  JOBS_LIST: "JOBS_LIST"
+}

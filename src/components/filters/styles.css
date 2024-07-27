@@ -1,0 +1,25 @@
+[data-theme="dark"] {
+  --border-color: #ffffff;
+}
+
+/* Dark mode styles */
+[data-theme="light"] {
+  --border-color: #333333;
+}
+
+.filterCtn {
+    display: flex;
+}
+
+.filterCtn  
+
+.filterItemPill {
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.filterHeading {
+    margin-bottom: 5px;
+}
