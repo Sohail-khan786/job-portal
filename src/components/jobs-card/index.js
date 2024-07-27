@@ -9,7 +9,8 @@ const JobsCard = ({
   jobTitle = "",
   contractLength = "",
   jobDesc = "",
-  skills = []
+  skills = [],
+  wages
 }) => {
   const { theme } = useAppContext();
 
@@ -23,6 +24,9 @@ const JobsCard = ({
         </div>
         <div>
           <p>{`Contract Length : ${contractLength}`}</p>
+        </div>
+        <div>
+          <p>{`Wages : ${wages}/hr`}</p>
         </div>
         <div>
           <p>{jobDesc}</p>

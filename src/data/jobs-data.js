@@ -6,7 +6,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Develop and maintain software applications.",
     "skills": ["JavaScript", "React", "Node.js"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 2,
@@ -15,7 +16,8 @@ export const jobsList = [
     "contractLength": "6 months",
     "jobDesc": "Analyze and interpret complex data sets.",
     "skills": ["Python", "Machine Learning", "SQL"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 3,
@@ -24,7 +26,8 @@ export const jobsList = [
     "contractLength": "18 months",
     "jobDesc": "Oversee project development from inception to completion.",
     "skills": ["Project Management", "Agile", "Communication"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 4,
@@ -33,7 +36,8 @@ export const jobsList = [
     "contractLength": "9 months",
     "jobDesc": "Analyze healthcare data to improve patient outcomes.",
     "skills": ["Data Analysis", "Healthcare Systems", "SQL"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 5,
@@ -42,7 +46,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Conduct financial analysis and modeling.",
     "skills": ["Excel", "Financial Modeling", "Python"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 6,
@@ -51,7 +56,8 @@ export const jobsList = [
     "contractLength": "6 months",
     "jobDesc": "Develop and update educational materials.",
     "skills": ["Curriculum Design", "Education", "Instructional Design"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 60
   },
   {
     jobId: 7,
@@ -60,7 +66,8 @@ export const jobsList = [
     "contractLength": "3 months",
     "jobDesc": "Create engaging content for various platforms.",
     "skills": ["Writing", "SEO", "Content Strategy"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 30
   },
   {
     jobId: 8,
@@ -69,7 +76,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Design and develop mechanical systems.",
     "skills": ["CAD", "Mechanical Design", "Problem Solving"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 30
   },
   {
     jobId: 9,
@@ -78,7 +86,8 @@ export const jobsList = [
     "contractLength": "6 months",
     "jobDesc": "Prepare and cook meals in a restaurant.",
     "skills": ["Cooking", "Recipe Development", "Food Safety"],
-    recruiterId: "rec1"
+    recruiterId: "rec1",
+    wages : 30
   },
   {
     jobId: 10,
@@ -87,7 +96,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Plan and arrange travel itineraries for clients.",
     "skills": ["Customer Service", "Travel Planning", "Sales"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 30
   },
   {
     jobId: 11,
@@ -96,7 +106,8 @@ export const jobsList = [
     "contractLength": "24 months",
     "jobDesc": "Manage day-to-day operations of a retail store.",
     "skills": ["Retail Management", "Sales", "Customer Service"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 30
   },
   {
     jobId: 12,
@@ -105,7 +116,8 @@ export const jobsList = [
     "contractLength": "36 months",
     "jobDesc": "Operate and navigate aircraft.",
     "skills": ["Flying", "Navigation", "Safety Protocols"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 30
   },
   {
     jobId: 13,
@@ -114,7 +126,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Protect systems and networks from cyber threats.",
     "skills": ["Network Security", "Penetration Testing", "Risk Management"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 20
   },
   {
     jobId: 14,
@@ -123,7 +136,8 @@ export const jobsList = [
     "contractLength": "24 months",
     "jobDesc": "Design and supervise construction projects.",
     "skills": ["Structural Analysis", "AutoCAD", "Project Management"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 20
   },
   {
     jobId: 15,
@@ -132,7 +146,8 @@ export const jobsList = [
     "contractLength": "9 months",
     "jobDesc": "Design and decorate residential interiors.",
     "skills": ["Interior Design", "AutoCAD", "Creativity"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 20
   },
   {
     jobId: 16,
@@ -141,7 +156,8 @@ export const jobsList = [
     "contractLength": "18 months",
     "jobDesc": "Research and develop sustainable farming practices.",
     "skills": ["Agriculture", "Research", "Sustainability"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 20
   },
   {
     jobId: 17,
@@ -150,7 +166,8 @@ export const jobsList = [
     "contractLength": "6 months",
     "jobDesc": "Plan and coordinate events.",
     "skills": ["Event Planning", "Organization", "Communication"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 20
   },
   {
     jobId: 18,
@@ -159,7 +176,8 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Develop solutions to environmental problems.",
     "skills": ["Environmental Science", "Engineering", "Problem Solving"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 80
   },
   {
     jobId: 19,
@@ -168,7 +186,8 @@ export const jobsList = [
     "contractLength": "24 months",
     "jobDesc": "Manage logistics and supply chain operations.",
     "skills": ["Logistics", "Supply Chain Management", "Problem Solving"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 80
   },
   {
     jobId: 20,
@@ -177,6 +196,7 @@ export const jobsList = [
     "contractLength": "12 months",
     "jobDesc": "Assist lawyers in preparing legal documents.",
     "skills": ["Legal Research", "Document Preparation", "Organization"],
-    recruiterId: "rec2"
+    recruiterId: "rec2",
+    wages : 80
   }
 ]

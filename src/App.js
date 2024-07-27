@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { AppContext } from "./app-context";
@@ -16,9 +16,21 @@ import RecruiterProfile from "./pages/recruiter-profile";
 import "./styles.css";
 import JobSeekerLogin from "./pages/job-seeker-login";
 import Toast from "./components/toast";
-import { ROUTES } from "./app-contants";
+import { DATA_SOURCE, ROUTES } from "./app-contants";
+import { jobsList } from "./data/jobs-data";
+import { LocalStorageUtils } from "./local-storage-crud-utls";
+
 
 const App = () => {
+
+  const initData = () => {
+    LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
+  }
+
+  useEffect(()=>{
+    // initData()
+  },[])
+
   return (
     <AppContext>
       <Router>

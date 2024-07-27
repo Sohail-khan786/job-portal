@@ -5,20 +5,41 @@ import JobsCard from "../components/jobs-card";
 import { LocalStorageUtils } from "../local-storage-crud-utls";
 import { jobsList } from "../data/jobs-data";
 import { DATA_SOURCE } from "../app-contants";
+import { filterJobs } from "../components/filters/filter-utils";
 
 const CandidateJobs = () => {
-  const { theme } = useAppContext();
+  const { theme, filters, setToastConfig } = useAppContext();
+  const { appliedFilters } = filters || {}; 
+  console.log(filters)
   const [jobs,setJobs] = useState([])
 
-  useEffect(() => {
+  const initPageData = () => {
     const jobsDataList = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
-    setJobs(jobsDataList);
-  }, [])
+    setJobs(filterJobs(jobsDataList,appliedFilters));
+  }
+
+  useEffect(() => {
+    initPageData();
+  }, [appliedFilters])
   
 
-  const onApplyClick = (jobDetails) => {
-    console.log(`Apply Job`)
+  const onApplyClick = (jobDetails,isAlreadyApplied) => {
+    if(isAlreadyApplied){
+      setToastConfig({
+          isOpen: true,
+          text: "Already Applied",
+          bgColor: "red",
+          textColor: "white",
+        });
+    }
+    console.log(`Apply Job`, isAlreadyApplied)
     console.log(jobDetails)
+    setToastConfig({
+          isOpen: true,
+          text: "Applied Successfully",
+          bgColor: "green",
+          textColor: "white",
+        });
   }
 
   return (
@@ -27,7 +48,7 @@ const CandidateJobs = () => {
       <p>Available Jobs</p>
       <div>
         {(jobs || []).map(job => {
-          const { jobId, companyName, jobTitle, contractLength, jobDesc, skills} = job || {}
+          const { jobId, companyName, jobTitle, contractLength, jobDesc, skills , isAlreadyApplied, wages} = job || {}
           return <JobsCard 
             key={jobId} 
             companyName={companyName} 
@@ -35,7 +56,9 @@ const CandidateJobs = () => {
             contractLength={contractLength} 
             jobDesc={jobDesc} 
             skills={skills} 
-            onApplyClick={() => { onApplyClick(job) }}
+            onApplyClick={() => { onApplyClick(job, isAlreadyApplied) }}
+            isAlreadyApplied={isAlreadyApplied}
+            wages={wages}
           />
         })}
         

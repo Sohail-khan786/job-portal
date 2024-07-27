@@ -1,10 +1,12 @@
 [data-theme="dark"] {
   --border-color: #ffffff;
+  --bg-color: #333333;
 }
 
 /* Dark mode styles */
 [data-theme="light"] {
   --border-color: #333333;
+  --bg-color: #ffffff;
 }
 
 .filterCtn {
@@ -22,4 +24,23 @@
 
 .filterHeading {
     margin-bottom: 5px;
+}
+
+.filterModal {
+  position: absolute;
+  background: var(--bg-color);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 20px;
+}
+
+.filterModalContent {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }

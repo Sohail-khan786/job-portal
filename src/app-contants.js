@@ -18,3 +18,8 @@ export const ROUTES = {
 export const DATA_SOURCE = {
   JOBS_LIST: "JOBS_LIST"
 }
+
+export const FILTERS_TYPE = {
+  SKILL: "SKILL",
+  WAGE: "WAGE"
+}

@@ -13,6 +13,21 @@ export const AppContext = ({ children }) => {
     isOpen: false,
   });
 
+  const [filters, setFilters] = useState({
+    appliedFilters : []
+  });
+
+  const updateAppliedFilters = (filterData) => {
+    let appliedFiltersUpdated = [...(filters?.appliedFilters || [])].filter(i => i.filterType !== filterData?.filterType);
+    appliedFiltersUpdated.push(filterData);
+    setFilters(prev => {
+      return {
+        ...prev,
+        appliedFilters: appliedFiltersUpdated
+      }
+    })
+  }
+
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
@@ -24,7 +39,7 @@ export const AppContext = ({ children }) => {
   }, [isDarkMode]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setToastConfig }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setToastConfig, filters, updateAppliedFilters }}>
       {children}
       <Toast
         isOpen={toastConfig.isOpen}

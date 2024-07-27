@@ -1,7 +1,7 @@
 .toastStyle {
   position: absolute;
-  bottom: 20%;
-  left: 40%;
+  bottom: 10%;
+  left: 20px;
   width: fit-content;
   padding: 10px 20px;
   border-radius: 8px;
