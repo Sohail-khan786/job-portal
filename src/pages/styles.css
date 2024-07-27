@@ -1,0 +1,12 @@
+.describeYourSelfSection {
+  opacity: 1;
+}
+
+.describeYourSelfSection .ctaWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.describeYourSelfSection .ctaWrapper .cta {
+  margin-right: 15px;
+}

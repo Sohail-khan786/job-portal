@@ -1,0 +1,8 @@
+.toastStyle {
+  position: absolute;
+  bottom: 20%;
+  left: 40%;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 8px;
+}

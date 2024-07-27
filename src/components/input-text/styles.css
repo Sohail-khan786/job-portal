@@ -1,0 +1,9 @@
+.errorText {
+  font-size: 12px;
+}
+
+.inputStyle {
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 100%;
+}
