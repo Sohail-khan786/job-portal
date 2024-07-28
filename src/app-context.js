@@ -132,8 +132,8 @@ export const AppContext = ({ children }) => {
     return LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
   }
 
-  const getAllJobsByPage = (page,size) => {
-    const allJobs = getAllJobs();
+  const getAllJobsByPage = (page,size,filterFn,appliedFilters) => {
+    const allJobs = filterFn(getAllJobs(),appliedFilters);
     const startIndex = page * size;
     const endIndex = page * size + size;
 

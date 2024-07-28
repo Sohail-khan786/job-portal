@@ -24,10 +24,7 @@ const CandidateJobs = () => {
   const fetchListingOfJobs = (pageNumber = 0, pageSize = 5) => {
     setCurrentPageNumber(pageNumber);
     try {
-      const { data, page, totalPages } = getAllJobsByPage(pageNumber,pageSize)
-      console.log("🚀 ~ fetchListingOfJobs ~ totalPages:", totalPages)
-      console.log("🚀 ~ fetchListingOfJobs ~ page:", page)
-      console.log("🚀 ~ fetchListingOfJobs ~ data:", data)
+      const { data, page, totalPages } = getAllJobsByPage(pageNumber,pageSize,filterJobs,appliedFilters)
       setCurrentPageNumber(page)
       setTotalPages(totalPages)
 
