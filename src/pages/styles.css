@@ -22,3 +22,7 @@
 .inputWrapper {
   width: 90%;
 }
+
+.fileInput {
+  margin-bottom: 20px;
+}
