@@ -137,7 +137,7 @@ export const AppContext = ({ children }) => {
     const startIndex = page * size;
     const endIndex = page * size + size;
 
-    return {data : allJobs.slice(startIndex,endIndex), page , size , totalPages : Math.ceil(allJobs/size)};
+    return {data : allJobs.slice(startIndex,endIndex), page , size , totalPages : Math.ceil(allJobs.length/size)};
   }
 
   

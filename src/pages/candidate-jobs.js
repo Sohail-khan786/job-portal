@@ -24,8 +24,12 @@ const CandidateJobs = () => {
   const fetchListingOfJobs = (pageNumber = 0, pageSize = 5) => {
     setCurrentPageNumber(pageNumber);
     try {
-      const { data, page } = getAllJobsByPage(pageNumber,pageSize)
+      const { data, page, totalPages } = getAllJobsByPage(pageNumber,pageSize)
+      console.log("🚀 ~ fetchListingOfJobs ~ totalPages:", totalPages)
+      console.log("🚀 ~ fetchListingOfJobs ~ page:", page)
+      console.log("🚀 ~ fetchListingOfJobs ~ data:", data)
       setCurrentPageNumber(page)
+      setTotalPages(totalPages)
 
       if(page == 0){
           setJobs(filterJobs([...data],appliedFilters));
