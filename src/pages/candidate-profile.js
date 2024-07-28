@@ -35,7 +35,6 @@ const CandidateProfile = () => {
       const resposDataJson = await resposData.json();
 
       if(resposDataJson?.status !== "404"){
-        console.log("🚀 ~ fetchGithubRepos ~ resposDataJson:", resposDataJson)
         setRepos(resposDataJson)
         return resposDataJson;
       }else {

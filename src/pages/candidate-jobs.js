@@ -9,7 +9,6 @@ import { filterJobs } from "../components/filters/filter-utils";
 
 const CandidateJobs = () => {
   const { theme, filters, setToastConfig, user } = useAppContext();
-  console.log("🚀 ~ CandidateJobs ~ user:", user)
   const { appliedFilters } = filters || {}; 
   console.log(filters)
   const [jobs,setJobs] = useState([])

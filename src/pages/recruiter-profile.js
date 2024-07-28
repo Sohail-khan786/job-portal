@@ -9,7 +9,7 @@ import InputText from "../components/input-text";
 import { isEmpty } from "../utils";
 
 const RecruiterProfile = () => {
-  const { theme,user, filters, setToastConfig } = useAppContext();
+  const { theme,user, filters, setToastConfig, postJobtoDb } = useAppContext();
   const { allFIlters  } = filters || {};
   const skillFilterData =   (allFIlters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
 
@@ -18,12 +18,19 @@ const RecruiterProfile = () => {
   const [selectedSkills , setSelectedSkills] = useState([]);
   const [isFromSubmitAttempted,setIsFromSubmitAttempted] = useState(false)
   const [jobToPost,setJobToPost] = useState({})
+  const [totalJobCount , setTotalJobCount] = useState(0);
+
   const [file, setFile] = useState(null);
 
 
   const initPageData = (recruiterId) => {
+    setJobToPost({})
+    setSelectedSkills([])
+    setIsFromSubmitAttempted(false)
     const jobsDataList = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
-    setJobs(filerByRecruiter(jobsDataList,recruiterId));
+    const jobsByRecruiter = filerByRecruiter(jobsDataList,recruiterId);
+    setTotalJobCount(jobsDataList.length);
+    setJobs([...filerByRecruiter(jobsDataList,recruiterId)]);
   }
 
   
@@ -50,8 +57,6 @@ const RecruiterProfile = () => {
       const { placeholder, fieldName } =  forItem || {};
       const errorMessage = placeholder;
       const isCurrentFormFieldValid = !!jobToPost[fieldName];
-      console.log("🚀 ~ isJobFormDataValid ~ isCurrentFormFieldValid:", isCurrentFormFieldValid)
-      // result = result && isCurrentFormFieldValid;
       if(!isCurrentFormFieldValid){
         return errorMessage;
       }
@@ -74,10 +79,17 @@ const RecruiterProfile = () => {
         });
         return;
     }else {
-      console.log("🚀 ~ RecruiterProfile ~ jobToPost:", jobToPost)
+      const jobToPostUpdated = { ...jobToPost , recruiterId: user?.id , jobId: totalJobCount + 1 }
+      
+      postJobtoDb(jobToPostUpdated)
+      initPageData(user?.id);
+      setToastConfig({
+          isOpen: true,
+          text: "Job Posted SuccessFully",
+          bgColor: "Green",
+          textColor: "white",
+        });
     }
-    
-    
   }
 
   const onSkillClick = (skillClicked) => {

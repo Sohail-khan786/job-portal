@@ -77,6 +77,15 @@ export const AppContext = ({ children }) => {
     setUser({})
   }
 
+  // jobs 
+
+  const postJobtoDb = (jobData) => {
+    const jobs = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST)
+    const jobsUpdated = [{ ...jobData} , ...jobs]
+    LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST, jobsUpdated)    
+    return jobsUpdated;
+  }
+
   
 
   // theme
@@ -105,7 +114,9 @@ export const AppContext = ({ children }) => {
         user,
         onLoginSuccess,
         updateUserInfo,
-        onLogout
+        onLogout,
+        //jobs 
+        postJobtoDb
       }}>
       {children}
       <Toast
