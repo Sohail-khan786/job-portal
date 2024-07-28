@@ -7,9 +7,12 @@ import JobsCard from "../components/jobs-card";
 import ButtonCustom from "../components/button-custom";
 import InputText from "../components/input-text";
 import { isEmpty } from "../utils";
+import { Routes, Route, useParams } from 'react-router-dom';
 
 const RecruiterProfile = () => {
-  const { theme,user, filters, setToastConfig, postJobtoDb, getJobApplicantData } = useAppContext();
+  let { jobId } = useParams();
+  console.log("🚀 ~ RecruiterProfile ~ jobId:", jobId)
+  const { theme,user, filters, setToastConfig, postJobtoDb, getJobApplicantData, getAllJobs } = useAppContext();
   const { allFIlters  } = filters || {};
   const skillFilterData =   (allFIlters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
 
@@ -28,7 +31,7 @@ const RecruiterProfile = () => {
     setJobToPost({})
     setSelectedSkills([])
     setIsFromSubmitAttempted(false)
-    const jobsDataList = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
+    const jobsDataList = getAllJobs();
     const jobsByRecruiter = filerByRecruiter(jobsDataList,recruiterId);
     setTotalJobCount(jobsDataList.length);
     setJobs([...filerByRecruiter(jobsDataList,recruiterId)]);

@@ -21,6 +21,8 @@ import { jobsList } from "./data/jobs-data";
 import { LocalStorageUtils } from "./local-storage-crud-utls";
 import { loginInfo } from "./data/auth-data";
 import { JOB_APPLICANTS } from "./data/job-applicats";
+import { APPLIED_JOBS } from "./data/applied-jobs";
+import JobDetailsRecruiter from "./pages/job-details-recruiter";
 
 
 const App = () => {
@@ -29,6 +31,7 @@ const App = () => {
     // LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
     // LocalStorageUtils.setItem(DATA_SOURCE.AUTH_DATA,loginInfo);
     // LocalStorageUtils.setItem(DATA_SOURCE.JOB_APPLICANTS,JOB_APPLICANTS);
+    // LocalStorageUtils.setItem(DATA_SOURCE.APPLIED_JOBS,APPLIED_JOBS);   
   }
 
   useEffect(()=>{
@@ -43,6 +46,7 @@ const App = () => {
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.RECRUITER_LOGIN} element={<RecruiterLogin />} />
           <Route path={ROUTES.RECRUITER_PROFILE} element={<RecruiterProfile />} />
+          <Route path={ROUTES.RECRUITER_JOB_DETAIL} element={<JobDetailsRecruiter />} />
           <Route path={ROUTES.CANDIDATE_LOGIN} element={<JobSeekerLogin />} />
           <Route path={ROUTES.CANDIDATE_PROFILE} element={<CandidateProfile />} />
           <Route path={ROUTES.CANDIDATE_JOBS} element={<CandidateJobs />} />

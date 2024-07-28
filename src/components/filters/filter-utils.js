@@ -3,9 +3,18 @@ import { haveCommonElement } from "../../utils";
 
 export const filerByRecruiter = (jobList = [] , recruiterId) => {
     return [...jobList].filter((i)=>{
-        return i.recruiterId === recruiterId;
+        return i.recruiterId == recruiterId;
     })
 } 
+
+export const getJobDetails = (jobList,jobId, recruiterId) => {
+    console.log("🚀 ~ getJobDetails ~ recruiterId:", recruiterId)
+    console.log("🚀 ~ getJobDetails ~ jobId:", jobId)
+    return [...jobList].find((i)=>{
+        console.log("🚀 ~ getJobDetails ~ i):", i)
+        return i.recruiterId == recruiterId && i.jobId == jobId;
+    })
+}
 
 const wageFilter = (jobList = [] , filterData) => {
     return [...jobList].filter((i)=>{

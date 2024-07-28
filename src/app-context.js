@@ -79,6 +79,17 @@ export const AppContext = ({ children }) => {
 
   // jobs 
 
+  const getAppliedUser = (jobId) => {
+    const applicantIds = [...LocalStorageUtils.getItem(DATA_SOURCE.APPLIED_JOBS)].filter( item => item.jobId == jobId).map(item => item.candidateId);
+    const allUsers =  LocalStorageUtils.getItem(DATA_SOURCE.AUTH_DATA);
+
+    return [...allUsers].filter(i => applicantIds.includes(i?.id));
+  }
+
+  const getAllJobs = () => {
+    return LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
+  }
+
   const postJobtoDb = (jobData) => {
     const jobs = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST)
     const jobsUpdated = [{ ...jobData} , ...jobs]
@@ -131,6 +142,8 @@ export const AppContext = ({ children }) => {
         updateUserInfo,
         onLogout,
         //jobs 
+        getAppliedUser,
+        getAllJobs,
         postJobtoDb,
         // jobs applicant data
         getJobApplicantNumber,

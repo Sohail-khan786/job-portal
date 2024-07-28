@@ -7,6 +7,7 @@ export const ROUTES = {
   HOME: "/",
   RECRUITER_LOGIN: "/recruiter-login",
   RECRUITER_PROFILE: "/recruiter/profile",
+  RECRUITER_JOB_DETAIL: "/recruiter/job-posted/:jobId",
   CANDIDATE_LOGIN: "/candidate-login",
   CANDIDATE_JOBS: "/candidate/jobs",
   CANDIDATE_PROFILE: "/candidate/profile",
@@ -18,7 +19,8 @@ export const ROUTES = {
 export const DATA_SOURCE = {
   JOBS_LIST: "JOBS_LIST",
   AUTH_DATA: "AUTH_DATA",
-  JOB_APPLICANTS: "JOB_APPLICANTS"
+  JOB_APPLICANTS: "JOB_APPLICANTS",
+  APPLIED_JOBS:"APPLIED_JOBS"
 }
 
 export const FILTERS_TYPE = {
