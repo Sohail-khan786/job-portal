@@ -23,3 +23,8 @@ export const FILTERS_TYPE = {
   SKILL: "SKILL",
   WAGE: "WAGE"
 }
+
+export const ALL_FILTERS = [
+  { filterType : FILTERS_TYPE.SKILL , value : ["JavaScript", "React", "Agile" , "SQL" , "Sales"] },
+  { filterType : FILTERS_TYPE.WAGE , value : 0 }
+]

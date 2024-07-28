@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import Toast from "./components/toast";
+import { ALL_FILTERS } from "./app-contants";
 
 const ThemeContext = createContext();
 
@@ -14,6 +15,7 @@ export const AppContext = ({ children }) => {
   });
 
   const [filters, setFilters] = useState({
+    allFIlters: [...ALL_FILTERS],
     appliedFilters : []
   });
 

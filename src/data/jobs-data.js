@@ -115,7 +115,7 @@ export const jobsList = [
     "jobTitle": "Pilot",
     "contractLength": "36 months",
     "jobDesc": "Operate and navigate aircraft.",
-    "skills": ["Flying", "Navigation", "Safety Protocols"],
+    "skills": ["React","Flying", "Navigation", "Safety Protocols"],
     recruiterId: "rec2",
     wages : 30
   },
@@ -185,7 +185,7 @@ export const jobsList = [
     "jobTitle": "Logistics Manager",
     "contractLength": "24 months",
     "jobDesc": "Manage logistics and supply chain operations.",
-    "skills": ["Logistics", "Supply Chain Management", "Problem Solving"],
+    "skills": ["React", "Logistics", "Supply Chain Management", "Problem Solving"],
     recruiterId: "rec2",
     wages : 80
   },

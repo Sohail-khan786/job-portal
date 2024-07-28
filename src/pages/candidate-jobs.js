@@ -59,6 +59,7 @@ const CandidateJobs = () => {
             onApplyClick={() => { onApplyClick(job, isAlreadyApplied) }}
             isAlreadyApplied={isAlreadyApplied}
             wages={wages}
+            appliedFilters={appliedFilters}
           />
         })}
         

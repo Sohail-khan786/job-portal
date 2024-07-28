@@ -3,6 +3,7 @@ import { useAppContext } from "../../app-context";
 import "./styles.css";
 import WagesFilter from "./wages-filter";
 import { FILTERS_TYPE } from "../../app-contants";
+import SkillsFilter from "./skills-filter";
 
 const Filters = () => {
   const { theme, filters , updateAppliedFilters, removeAppliedFilters } = useAppContext();
@@ -23,6 +24,11 @@ const Filters = () => {
     if(filterModalToShow === FILTERS_TYPE.WAGE){
       return <WagesFilter onApplyClick={onApplyClick} onRemoveClick={onRemoveClick}/>
     }
+
+    if(filterModalToShow === FILTERS_TYPE.SKILL){
+      return <SkillsFilter onApplyClick={onApplyClick} onRemoveClick={onRemoveClick}/>
+    }
+
     return null;
   }
 
