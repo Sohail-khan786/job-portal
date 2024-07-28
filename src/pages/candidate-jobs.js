@@ -8,7 +8,7 @@ import { DATA_SOURCE } from "../app-contants";
 import { filterJobs } from "../components/filters/filter-utils";
 
 const CandidateJobs = () => {
-  const { theme, filters, setToastConfig, user } = useAppContext();
+  const { theme, filters, setToastConfig, user, hasUserAppliedToJob, saveJobApplicationToDb } = useAppContext();
   const { appliedFilters } = filters || {}; 
   console.log(filters)
   const [jobs,setJobs] = useState([])
@@ -23,7 +23,9 @@ const CandidateJobs = () => {
   }, [appliedFilters])
   
 
-  const onApplyClick = (jobDetails,isAlreadyApplied) => {
+  const onApplyClick = (jobDetails) => {
+    const isAlreadyApplied =  hasUserAppliedToJob(user?.id ,jobDetails?.jobId)
+    
     if(isAlreadyApplied){
       setToastConfig({
           isOpen: true,
@@ -31,9 +33,16 @@ const CandidateJobs = () => {
           bgColor: "red",
           textColor: "white",
         });
+        return 
     }
     console.log(`Apply Job`, isAlreadyApplied)
     console.log(jobDetails)
+    const payLoad = {
+      "jobId": jobDetails?.jobId,
+      "recruiterId": jobDetails?.recruiterId,
+      "candidateId": user?.id
+    }
+    saveJobApplicationToDb(payLoad)
     setToastConfig({
           isOpen: true,
           text: "Applied Successfully",
@@ -57,7 +66,7 @@ const CandidateJobs = () => {
             contractLength={contractLength} 
             jobDesc={jobDesc} 
             skills={skills} 
-            onApplyClick={() => { onApplyClick(job, isAlreadyApplied) }}
+            onApplyClick={() => { onApplyClick(job) }}
             isAlreadyApplied={isAlreadyApplied}
             wages={wages}
             appliedFilters={appliedFilters}

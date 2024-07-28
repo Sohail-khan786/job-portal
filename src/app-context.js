@@ -23,30 +23,30 @@ export const AppContext = ({ children }) => {
   // TODO : 
 
   // recruiter user
-  const [user, setUser] = useState({
-    id: "rec1",
-    email: "harsh@gmail.com",
-    password: "test1234",
-    role: ROLE_TYPES.RECRUITER,
-    name: "Harsh",
-    phone: "+91 1234"
-  });
+  // const [user, setUser] = useState({
+  //   id: "rec1",
+  //   email: "harsh@gmail.com",
+  //   password: "test1234",
+  //   role: ROLE_TYPES.RECRUITER,
+  //   name: "Harsh",
+  //   phone: "+91 1234"
+  // });
 
   // candidate user
-//   const [user, setUser] = useState({
-//   "id": "cad1",
-//   "email": "Amit@gmail.com",
-//   "password": "test1234",
-//   "role": "CANDIDATE",
-//   "name": "Amit",
-//   "skills": [
-//     "Agile",
-//     "SQL",
-//     "Sales"
-//   ],
-//   "phone": "+91 412123",
-//   "githubProfileLink": "https://api.github.com/users/Sohail-khan786/repos"
-// })
+  const [user, setUser] = useState({
+  "id": "cad1",
+  "email": "Amit@gmail.com",
+  "password": "test1234",
+  "role": "CANDIDATE",
+  "name": "Amit",
+  "skills": [
+    "Agile",
+    "SQL",
+    "Sales"
+  ],
+  "phone": "+91 412123",
+  "githubProfileLink": "https://api.github.com/users/Sohail-khan786/repos"
+})
   // filters
   const updateAppliedFilters = (filterData) => {
     let appliedFiltersUpdated = [...(filters?.appliedFilters || [])].filter(i => i.filterType !== filterData?.filterType);
@@ -108,6 +108,26 @@ export const AppContext = ({ children }) => {
     return [...allUsers].filter(i => applicantIds.includes(i?.id));
   }
 
+  const hasUserAppliedToJob = (cid,jobId) => {
+    const userFound = [...LocalStorageUtils.getItem(DATA_SOURCE.APPLIED_JOBS)].filter( item => item.jobId == jobId).find(item => item.candidateId == cid);
+
+    return !!userFound;
+  }
+
+  const saveJobApplicationToDb = (payLoad) => {
+    let allAppliedJobsUpdated = [...LocalStorageUtils.getItem(DATA_SOURCE.APPLIED_JOBS)];
+    allAppliedJobsUpdated = [payLoad , ...[...LocalStorageUtils.getItem(DATA_SOURCE.APPLIED_JOBS)]]
+    LocalStorageUtils.setItem(DATA_SOURCE.APPLIED_JOBS, allAppliedJobsUpdated)  
+    let jobsApplicantData = LocalStorageUtils.getItem(DATA_SOURCE.JOB_APPLICANTS)
+    if(!jobsApplicantData[payLoad?.jobId])  {
+      jobsApplicantData[payLoad?.jobId] = 1;
+    }else {
+      jobsApplicantData[payLoad?.jobId] = jobsApplicantData[payLoad?.jobId] +  1;
+    }
+    LocalStorageUtils.setItem(DATA_SOURCE.JOB_APPLICANTS, jobsApplicantData)  
+  }
+
+
   const getAllJobs = () => {
     return LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
   }
@@ -133,6 +153,8 @@ export const AppContext = ({ children }) => {
     const jobsApplicantData = LocalStorageUtils.getItem(DATA_SOURCE.JOB_APPLICANTS)
     return jobsApplicantData;
   }
+
+  
 
   
 
@@ -166,6 +188,8 @@ export const AppContext = ({ children }) => {
         onLogout,
         //jobs 
         getAppliedUser,
+        hasUserAppliedToJob,
+        saveJobApplicationToDb,
         getAllJobs,
         postJobtoDb,
         // jobs applicant data
