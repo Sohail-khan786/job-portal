@@ -20,6 +20,7 @@ import { DATA_SOURCE, ROUTES } from "./app-contants";
 import { jobsList } from "./data/jobs-data";
 import { LocalStorageUtils } from "./local-storage-crud-utls";
 import { loginInfo } from "./data/auth-data";
+import { JOB_APPLICANTS } from "./data/job-applicats";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
   const initData = () => {
     // LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
     // LocalStorageUtils.setItem(DATA_SOURCE.AUTH_DATA,loginInfo);
+    // LocalStorageUtils.setItem(DATA_SOURCE.JOB_APPLICANTS,JOB_APPLICANTS);
   }
 
   useEffect(()=>{

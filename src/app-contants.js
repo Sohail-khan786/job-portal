@@ -17,7 +17,8 @@ export const ROUTES = {
 
 export const DATA_SOURCE = {
   JOBS_LIST: "JOBS_LIST",
-  AUTH_DATA: "AUTH_DATA"
+  AUTH_DATA: "AUTH_DATA",
+  JOB_APPLICANTS: "JOB_APPLICANTS"
 }
 
 export const FILTERS_TYPE = {

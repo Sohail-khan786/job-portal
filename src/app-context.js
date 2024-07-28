@@ -86,6 +86,21 @@ export const AppContext = ({ children }) => {
     return jobsUpdated;
   }
 
+
+  // jobs applicant data
+  const getJobApplicantNumber = (jobId) => {
+    const jobsApplicantData = LocalStorageUtils.getItem(DATA_SOURCE.JOB_APPLICANTS)
+    if(!jobsApplicantData[jobId])  {
+      return 0;
+    }
+    return jobsApplicantData[jobId];
+  }
+
+  const getJobApplicantData = () => {
+    const jobsApplicantData = LocalStorageUtils.getItem(DATA_SOURCE.JOB_APPLICANTS)
+    return jobsApplicantData;
+  }
+
   
 
   // theme
@@ -116,7 +131,10 @@ export const AppContext = ({ children }) => {
         updateUserInfo,
         onLogout,
         //jobs 
-        postJobtoDb
+        postJobtoDb,
+        // jobs applicant data
+        getJobApplicantNumber,
+        getJobApplicantData
       }}>
       {children}
       <Toast

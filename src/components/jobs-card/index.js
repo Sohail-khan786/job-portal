@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../../app-context";
 import "./styles.css";
 import ButtonCustom from "../button-custom";
@@ -13,11 +13,13 @@ const JobsCard = ({
   skills = [],
   wages,
   appliedFilters,
-  showCta = true
+  showCta = true,
+  jobApplicantsNumber
 }) => {
   const { theme } = useAppContext();
   const appliedSkillFiltersData =   (appliedFilters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
   const appliedSkills = [ ...(appliedSkillFiltersData?.value || [])];
+
 
   return (
     <div className="jobsCard">
@@ -30,6 +32,7 @@ const JobsCard = ({
         <div>
           <p>{`Contract Length : ${contractLength}`}</p>
         </div>
+        
         <div>
           <p>{`Wages : ${wages}/hr`}</p>
         </div>
@@ -45,6 +48,9 @@ const JobsCard = ({
             }
           </p>
         </div>
+        {jobApplicantsNumber && <div>
+          <p>{`Job Appliants : ${jobApplicantsNumber}`}</p>
+        </div>}
         {showCta && <ButtonCustom text="Apply" onClick={onApplyClick} />}
     </div>
   );

@@ -9,7 +9,7 @@ import InputText from "../components/input-text";
 import { isEmpty } from "../utils";
 
 const RecruiterProfile = () => {
-  const { theme,user, filters, setToastConfig, postJobtoDb } = useAppContext();
+  const { theme,user, filters, setToastConfig, postJobtoDb, getJobApplicantData } = useAppContext();
   const { allFIlters  } = filters || {};
   const skillFilterData =   (allFIlters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
 
@@ -19,6 +19,7 @@ const RecruiterProfile = () => {
   const [isFromSubmitAttempted,setIsFromSubmitAttempted] = useState(false)
   const [jobToPost,setJobToPost] = useState({})
   const [totalJobCount , setTotalJobCount] = useState(0);
+  const [jobApplicantMap,setJobApplicantMap] = useState(getJobApplicantData())
 
   const [file, setFile] = useState(null);
 
@@ -213,6 +214,7 @@ const RecruiterProfile = () => {
             wages={wages}
             appliedFilters={[]}
             showCta={false}
+            jobApplicantsNumber={jobApplicantMap[jobId]}
           />
         })}
         
