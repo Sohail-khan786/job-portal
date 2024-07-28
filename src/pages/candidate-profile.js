@@ -128,7 +128,7 @@ const CandidateProfile = () => {
       <ButtonCustom text={"update Github"} onClick={onUpdateGithub} />
       <br/>
       <br/>
-      <div>
+      {(repos || []).length > 0 && <div>
         <p>List of all you Repos : </p>
         <ul>
           {
@@ -139,7 +139,7 @@ const CandidateProfile = () => {
           }
           
         </ul>
-      </div>
+      </div>}
     </div>
   );
 };
