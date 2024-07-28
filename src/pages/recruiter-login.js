@@ -1,5 +1,5 @@
 import React from "react";
-import { ROLE_TYPES } from "../app-contants";
+import { ROLE_TYPES, ROUTES } from "../app-contants";
 import LoginForm from "../components/login-form";
 import { useAppContext } from "../app-context";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const RecruiterLogin = () => {
   const navigate = useNavigate();
 
   const onRecruiterLoginSuccess = () => {
-    navigate("/recruiter/profile");
+    navigate(ROUTES.RECRUITER_JOBS);
   };
 
   return (

@@ -6,7 +6,7 @@ export const ROLE_TYPES = {
 export const ROUTES = {
   HOME: "/",
   RECRUITER_LOGIN: "/recruiter-login/",
-  RECRUITER_PROFILE: "/recruiter/profile/",
+  RECRUITER_JOBS: "/recruiter/jobs/",
   RECRUITER_JOB_DETAIL: "/recruiter/job-posted/:jobId/",
   RECRUITER_CANDIDATE_PROFILE_PREVIEW: "/recruiter/candidate/profile/:cid/",
   CANDIDATE_LOGIN: "/candidate-login/",
@@ -17,7 +17,7 @@ export const ROUTES = {
 };
 
 export const PROTECTED_ROUTES = [
-  ROUTES.RECRUITER_PROFILE , 
+  ROUTES.RECRUITER_JOBS , 
   ROUTES.RECRUITER_JOB_DETAIL,
   ROUTES.CANDIDATE_PROFILE
 ]

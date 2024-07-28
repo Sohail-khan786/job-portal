@@ -34,7 +34,7 @@ const Nav = () => {
   };
 
 
-  const profilePath = user?.role === ROLE_TYPES.CANDIDATE ? ROUTES.CANDIDATE_PROFILE : ROLE_TYPES.RECRUITER_PROFILE;
+  const profilePath = user?.role === ROLE_TYPES.CANDIDATE ? ROUTES.CANDIDATE_PROFILE : ROLE_TYPES.RECRUITER_JOBS;
 
   return (
     <nav className={`navbar ${theme}`}>

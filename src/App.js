@@ -48,7 +48,7 @@ const App = () => {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.RECRUITER_LOGIN} element={<RecruiterLogin />} />
-          <Route path={ROUTES.RECRUITER_PROFILE} element={<RecruiterProfile />} />
+          <Route path={ROUTES.RECRUITER_JOBS} element={<RecruiterProfile />} />
           <Route path={ROUTES.RECRUITER_JOB_DETAIL} element={<JobDetailsRecruiter />} />
           <Route path={ROUTES.RECRUITER_CANDIDATE_PROFILE_PREVIEW} element={<CandidateProfilePublic />} />
           <Route path={ROUTES.CANDIDATE_LOGIN} element={<JobSeekerLogin />} />
