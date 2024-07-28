@@ -10,7 +10,7 @@ const Nav = () => {
 
 
   const checkPathProtection = (locationPassed) => {
-    const isPathProtected = PROTECTED_ROUTES.includes(locationPassed?.pathname)
+    const isPathProtected = PROTECTED_ROUTES.includes(locationPassed?.pathname) || PROTECTED_ROUTES.includes(`${locationPassed?.pathname}/`)
     if(isPathProtected && !user?.id){
       setToastConfig({
           isOpen: true,
