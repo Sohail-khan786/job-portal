@@ -21,6 +21,8 @@ export const AppContext = ({ children }) => {
   });
 
   // TODO : 
+  const [user, setUser] = useState({})
+
 
   // recruiter user
   // const [user, setUser] = useState({
@@ -33,20 +35,20 @@ export const AppContext = ({ children }) => {
   // });
 
   // candidate user
-  const [user, setUser] = useState({
-  "id": "cad1",
-  "email": "Amit@gmail.com",
-  "password": "test1234",
-  "role": "CANDIDATE",
-  "name": "Amit",
-  "skills": [
-    "Agile",
-    "SQL",
-    "Sales"
-  ],
-  "phone": "+91 412123",
-  "githubProfileLink": "https://api.github.com/users/Sohail-khan786/repos"
-})
+//   const [user, setUser] = useState({
+//   "id": "cad1",
+//   "email": "Amit@gmail.com",
+//   "password": "test1234",
+//   "role": "CANDIDATE",
+//   "name": "Amit",
+//   "skills": [
+//     "Agile",
+//     "SQL",
+//     "Sales"
+//   ],
+//   "phone": "+91 412123",
+//   "githubProfileLink": "https://api.github.com/users/Sohail-khan786/repos"
+// })
   // filters
   const updateAppliedFilters = (filterData) => {
     let appliedFiltersUpdated = [...(filters?.appliedFilters || [])].filter(i => i.filterType !== filterData?.filterType);
