@@ -1,6 +1,12 @@
 import { FILTERS_TYPE } from "../../app-contants";
 import { haveCommonElement } from "../../utils";
 
+export const filerByRecruiter = (jobList = [] , recruiterId) => {
+    return [...jobList].filter((i)=>{
+        return i.recruiterId === recruiterId;
+    })
+} 
+
 const wageFilter = (jobList = [] , filterData) => {
     return [...jobList].filter((i)=>{
         return i.wages >= filterData.value;

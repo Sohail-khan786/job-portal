@@ -22,14 +22,12 @@ export const AppContext = ({ children }) => {
 
   // TODO : 
   const [user, setUser] = useState({
-    id: "cad1",
-    email: "Amit@gmail.com",
-    password: "",
-    role: ROLE_TYPES.CANDIDATE,
-    name: "Amit",
-    skills : ["Agile" , "SQL" , "Sales"],
-    phone: "+91 412123",
-    githubProfileLink : "https://api.github.com/users/Sohail-khan786/repos"
+    id: "rec1",
+    email: "harsh@gmail.com",
+    password: "test1234",
+    role: ROLE_TYPES.RECRUITER,
+    name: "Harsh",
+    phone: "+91 1234"
   });
 
   // filters

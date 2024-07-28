@@ -12,7 +12,8 @@ const JobsCard = ({
   jobDesc = "",
   skills = [],
   wages,
-  appliedFilters
+  appliedFilters,
+  showCta = true
 }) => {
   const { theme } = useAppContext();
   const appliedSkillFiltersData =   (appliedFilters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
@@ -44,7 +45,7 @@ const JobsCard = ({
             }
           </p>
         </div>
-        <ButtonCustom text="Apply" onClick={onApplyClick} />
+        {showCta && <ButtonCustom text="Apply" onClick={onApplyClick} />}
     </div>
   );
 };
