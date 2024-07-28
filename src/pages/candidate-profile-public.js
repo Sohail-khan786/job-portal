@@ -10,7 +10,7 @@ const CandidateProfilePublic = () => {
 
   const { theme , findUserById} = useAppContext();
   const [userData , setUserData] = useState(null);
-  const { name , skills , githubProfileLink } =  userData || {  name : "" , skills : [] , githubProfileLink : "" }
+  const { name , skills , githubProfileLink , phone } =  userData || {  name : "" , skills : [] , githubProfileLink : "" }
   
   useEffect(()=>{
     if(cid){
@@ -24,6 +24,7 @@ const CandidateProfilePublic = () => {
   return (
     <div className={`page ${theme}`}>
       <h1>{`Name : ${name}`}</h1>
+      <p>{`Phone : ${phone}`}</p>
       <div className="skillsCtn">
         <p>Skills :</p>
         <ul>
