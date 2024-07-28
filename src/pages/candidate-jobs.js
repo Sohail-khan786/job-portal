@@ -51,6 +51,7 @@ const CandidateJobs = () => {
           const { jobId, companyName, jobTitle, contractLength, jobDesc, skills , isAlreadyApplied, wages} = job || {}
           return <JobsCard 
             key={jobId} 
+            jobId={jobId}
             companyName={companyName} 
             jobTitle={jobTitle} 
             contractLength={contractLength} 

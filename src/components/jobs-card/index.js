@@ -5,7 +5,9 @@ import ButtonCustom from "../button-custom";
 import { FILTERS_TYPE } from "../../app-contants";
 
 const JobsCard = ({
+  onCardClick = () => {},
   onApplyClick = () => {},
+  jobId,
   companyName = "",
   jobTitle = "",
   contractLength = "",
@@ -22,7 +24,7 @@ const JobsCard = ({
 
 
   return (
-    <div className="jobsCard">
+    <div className="jobsCard" onClick={()=>{onCardClick(jobId)}}>
         <div>
           <p>{`Company : ${companyName}`}</p>
         </div>

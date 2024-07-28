@@ -2,16 +2,18 @@ import React, { useState , useEffect} from "react";
 import { useAppContext } from "../app-context";
 import { filerByRecruiter } from "../components/filters/filter-utils";
 import { LocalStorageUtils } from "../local-storage-crud-utls";
-import { DATA_SOURCE, FILTERS_TYPE } from "../app-contants";
+import { DATA_SOURCE, FILTERS_TYPE, ROUTES } from "../app-contants";
 import JobsCard from "../components/jobs-card";
 import ButtonCustom from "../components/button-custom";
 import InputText from "../components/input-text";
 import { isEmpty } from "../utils";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams , useNavigate} from 'react-router-dom';
+
 
 const RecruiterProfile = () => {
   let { jobId } = useParams();
-  console.log("🚀 ~ RecruiterProfile ~ jobId:", jobId)
+  const navigate = useNavigate();
+  
   const { theme,user, filters, setToastConfig, postJobtoDb, getJobApplicantData, getAllJobs } = useAppContext();
   const { allFIlters  } = filters || {};
   const skillFilterData =   (allFIlters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
@@ -186,6 +188,13 @@ const RecruiterProfile = () => {
     
   }
 
+  const openJobDetailPage = (jobIdPassed) => {
+    let jobDetailsRouteParts = ROUTES.RECRUITER_JOB_DETAIL.split(":")
+    jobDetailsRouteParts[1] = jobIdPassed
+    const finalRoute = jobDetailsRouteParts.join("");
+    navigate(finalRoute)
+  }
+
 
 
   return (
@@ -206,7 +215,9 @@ const RecruiterProfile = () => {
         {(jobs || []).map(job => {
           const { jobId, companyName, jobTitle, contractLength, jobDesc, skills , isAlreadyApplied, wages} = job || {}
           return <JobsCard
+            onCardClick={(jobId) => { openJobDetailPage(jobId) }}
             key={jobId} 
+            jobId={jobId}
             companyName={companyName} 
             jobTitle={jobTitle} 
             contractLength={contractLength} 

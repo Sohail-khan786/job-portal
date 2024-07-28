@@ -23,7 +23,7 @@ const CandidateProfilePublic = () => {
 
   return (
     <div className={`page ${theme}`}>
-      
+      <h1>{`Name : ${name}`}</h1>
       <div className="skillsCtn">
         <p>Skills :</p>
         <ul>

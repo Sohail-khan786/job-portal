@@ -2,12 +2,16 @@ import React, { useState , useEffect} from "react";
 import { useAppContext } from "../app-context";
 import { filerByRecruiter, getJobDetails } from "../components/filters/filter-utils";
 import { LocalStorageUtils } from "../local-storage-crud-utls";
-import { DATA_SOURCE } from "../app-contants";
-import { useParams } from 'react-router-dom';
+import { DATA_SOURCE, ROUTES } from "../app-contants";
+import { useNavigate, useParams } from 'react-router-dom';
 import JobsCard from "../components/jobs-card";
 
 const JobDetailsRecruiter = () => {
+    
     let { jobId } = useParams();
+    const navigate = useNavigate();
+
+
     const { theme,user , getAllJobs, getJobApplicantData, getAppliedUser } = useAppContext();
     const [jobData,setjobData] = useState();
     const [jobApplicantMap,setJobApplicantMap] = useState(getJobApplicantData())
@@ -33,6 +37,13 @@ const JobDetailsRecruiter = () => {
         }
     }
 
+    const onUserClick = (userIdPassed) => {
+        let userDetailsRouteParts = ROUTES.RECRUITER_CANDIDATE_PROFILE_PREVIEW.split(":")
+        userDetailsRouteParts[1] = userIdPassed
+        const finalRoute = userDetailsRouteParts.join("");
+        navigate(finalRoute)
+    }
+
 
 
 
@@ -52,6 +63,7 @@ useEffect(() => {
                     <p>Job Details</p>
                     <JobsCard
                         key={jobData?.jobId} 
+                        jobId={jobData?.jobId} 
                         companyName={jobData?.companyName} 
                         jobTitle={jobData?.jobTitle} 
                         contractLength={jobData?.contractLength} 
@@ -72,7 +84,7 @@ useEffect(() => {
                         {
                             (appliedUsers || []).map(userItem => {
                                 const { name , id , skills} = userItem || {}
-                                return <li key={id} className="applicantItem" >{name} : {(skills || []).join(" , ")}</li>
+                                return <li key={id} onClick={() => { onUserClick(id) }} className="applicantItem" >{name} : {(skills || []).join(" , ")}</li>
                             })
                         }
                     </ul>
