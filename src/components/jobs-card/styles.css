@@ -31,3 +31,15 @@
   padding: 0px 3px;
 }
 
+
+
+
+@media only screen and (min-width: 600px) {
+  .jobsCard {
+    border: 1px solid var(--border-color);
+    padding: 5px 10px 20px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+}

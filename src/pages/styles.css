@@ -30,3 +30,25 @@
 .applicantItem {
   margin-bottom: 10px;
 }
+
+.jobsContainer {
+
+}
+
+.jobsCardContainer {
+
+}
+
+@media only screen and (min-width: 600px) {
+  .jobsContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .jobsCardContainer {
+    min-width: 40%;
+  }
+}
+

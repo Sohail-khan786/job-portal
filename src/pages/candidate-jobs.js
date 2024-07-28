@@ -21,7 +21,7 @@ const CandidateJobs = () => {
     threshold: 0.5,
   });
 
-  const fetchListingOfJobs = (pageNumber = 0, pageSize = 5) => {
+  const fetchListingOfJobs = (pageNumber = 0, pageSize = 8) => {
     setCurrentPageNumber(pageNumber);
     try {
       const { data, page, totalPages } = getAllJobsByPage(pageNumber,pageSize,filterJobs,appliedFilters)
@@ -94,11 +94,11 @@ const CandidateJobs = () => {
     <div className={`page ${theme}`}>
       <Filters />
       <p>Available Jobs</p>
-      <div>
+      <div className="jobsContainer">
         {(jobs || []).map((job,idx) => {
           const { jobId, companyName, jobTitle, contractLength, jobDesc, skills , isAlreadyApplied, wages} = job || {}
           return (
-          <div key={jobId} ref={idx === jobs.length - 1 ? containerRef : null}>
+          <div className="jobsCardContainer"  key={jobId} ref={idx === jobs.length - 1 ? containerRef : null}>
             <JobsCard 
               key={jobId} 
               jobId={jobId}
