@@ -8,9 +8,9 @@ import { useParams } from "react-router-dom";
 import GithubProfileSection from "../components/github-profile-section";
 
 
-const CandidateProfile = () => {
+const CandidateProfilePublic = () => {
     let { cid } = useParams();
-    console.log("🚀 ~ CandidateProfile ~ cid:", cid)
+    console.log("🚀 ~ CandidateProfilePublic ~ cid:", cid)
 
   const { theme, filters, user, updateUserInfo, setToastConfig } = useAppContext();
   
@@ -18,6 +18,7 @@ const CandidateProfile = () => {
   const skillFilterData =   (allFIlters || []).find(filterData => filterData?.filterType === FILTERS_TYPE.SKILL);
 
   const [selectedSkills , setSelectedSkills] = useState([ ...(user?.skills || []) ]);
+  const [repos , setRepos] = useState([]);
   const githubProfileLinkParts = (user?.githubProfileLink || "").split("/");
   const [githubProfileName, setGithubProfileName] = useState(user?.githubProfileLink ? githubProfileLinkParts[githubProfileLinkParts.length - 2] : "");
   // const [githubProfileLink, ] = useState(user?.githubProfileLink || "");
@@ -31,16 +32,6 @@ const CandidateProfile = () => {
         selectedSkillsUpdated.push(skillClicked)
     }
     setSelectedSkills(selectedSkillsUpdated);
-  }
-
-  const updateUserDataToDb = (userDataUpdate) => {
-    setToastConfig({
-            isOpen: true,
-            text: "User Data Updated",
-            bgColor: "Green",
-            textColor: "white",
-          });
-    updateUserInfo(userDataUpdate);
   }
 
   const fetchGithubRepos = async (githubProfileLinkPassed) => {
@@ -71,6 +62,16 @@ const CandidateProfile = () => {
     }
   }
 
+  const updateUserDataToDb = (userDataUpdate) => {
+    setToastConfig({
+            isOpen: true,
+            text: "User Data Updated",
+            bgColor: "Green",
+            textColor: "white",
+          });
+    updateUserInfo(userDataUpdate);
+  }
+
   const onUpdateGithub  = async () => {
     const githubProfileLink = `https://api.github.com/users/${githubProfileName}/repos`;
     const resp = await fetchGithubRepos(githubProfileLink);
@@ -85,6 +86,15 @@ const CandidateProfile = () => {
     updateUserDataToDb(userDataUpdate)
   }
 
+  const onRepoClick = (linkPassed) => {
+    window.open(linkPassed, '_blank').focus();
+  }
+
+  useEffect(() => {
+    if(user?.githubProfileLink){
+      fetchGithubRepos(user?.githubProfileLink)
+    }    
+  }, [user?.githubProfileLink])
   
 
   return (
@@ -127,4 +137,4 @@ const CandidateProfile = () => {
   );
 };
 
-export default CandidateProfile;
+export default CandidateProfilePublic;

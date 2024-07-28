@@ -23,6 +23,7 @@ import { loginInfo } from "./data/auth-data";
 import { JOB_APPLICANTS } from "./data/job-applicats";
 import { APPLIED_JOBS } from "./data/applied-jobs";
 import JobDetailsRecruiter from "./pages/job-details-recruiter";
+import CandidateProfilePublic from "./pages/candidate-profile-public";
 
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
           <Route path={ROUTES.RECRUITER_LOGIN} element={<RecruiterLogin />} />
           <Route path={ROUTES.RECRUITER_PROFILE} element={<RecruiterProfile />} />
           <Route path={ROUTES.RECRUITER_JOB_DETAIL} element={<JobDetailsRecruiter />} />
+          <Route path={ROUTES.RECRUITER_CANDIDATE_PROFILE_PREVIEW} element={<CandidateProfilePublic />} />
           <Route path={ROUTES.CANDIDATE_LOGIN} element={<JobSeekerLogin />} />
           <Route path={ROUTES.CANDIDATE_PROFILE} element={<CandidateProfile />} />
           <Route path={ROUTES.CANDIDATE_JOBS} element={<CandidateJobs />} />
