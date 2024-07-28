@@ -6,20 +6,48 @@ import { LocalStorageUtils } from "../local-storage-crud-utls";
 import { jobsList } from "../data/jobs-data";
 import { DATA_SOURCE } from "../app-contants";
 import { filterJobs } from "../components/filters/filter-utils";
+import { useElementOnScreen } from "../hooks/useElementOnScreen";
 
 const CandidateJobs = () => {
-  const { theme, filters, setToastConfig, user, hasUserAppliedToJob, saveJobApplicationToDb } = useAppContext();
+  const { theme, filters, setToastConfig, user, hasUserAppliedToJob, saveJobApplicationToDb, getAllJobsByPage } = useAppContext();
   const { appliedFilters } = filters || {}; 
   console.log(filters)
   const [jobs,setJobs] = useState([])
+  const [currentPageNumber, setCurrentPageNumber] = useState(0);
+  const [totalPages, setTotalPages] = useState(5);
+  const [containerRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5,
+  });
 
-  const initPageData = () => {
-    const jobsDataList = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
-    setJobs(filterJobs(jobsDataList,appliedFilters));
-  }
+  const fetchListingOfJobs = (pageNumber = 0, pageSize = 5) => {
+    setCurrentPageNumber(pageNumber);
+    try {
+      const { data, page } = getAllJobsByPage(pageNumber,pageSize)
+      setCurrentPageNumber(page)
+
+      if(page == 0){
+          setJobs(filterJobs([...data],appliedFilters));
+      }else {
+          setJobs(filterJobs([...jobs ,...data],appliedFilters));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
 
   useEffect(() => {
-    initPageData();
+
+    if (isVisible && currentPageNumber < totalPages) {
+      fetchListingOfJobs(currentPageNumber + 1);
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
+    fetchListingOfJobs(0);
   }, [appliedFilters])
   
 
@@ -66,21 +94,26 @@ const CandidateJobs = () => {
       <Filters />
       <p>Available Jobs</p>
       <div>
-        {(jobs || []).map(job => {
+        {(jobs || []).map((job,idx) => {
           const { jobId, companyName, jobTitle, contractLength, jobDesc, skills , isAlreadyApplied, wages} = job || {}
-          return <JobsCard 
-            key={jobId} 
-            jobId={jobId}
-            companyName={companyName} 
-            jobTitle={jobTitle} 
-            contractLength={contractLength} 
-            jobDesc={jobDesc} 
-            skills={skills} 
-            onApplyClick={() => { onApplyClick(job) }}
-            isAlreadyApplied={isAlreadyApplied}
-            wages={wages}
-            appliedFilters={appliedFilters}
-          />
+          return (
+          <div key={jobId} ref={idx === jobs.length - 1 ? containerRef : null}>
+            <JobsCard 
+              key={jobId} 
+              jobId={jobId}
+              companyName={companyName} 
+              jobTitle={jobTitle} 
+              contractLength={contractLength} 
+              jobDesc={jobDesc} 
+              skills={skills} 
+              onApplyClick={() => { onApplyClick(job) }}
+              isAlreadyApplied={isAlreadyApplied}
+              wages={wages}
+              appliedFilters={appliedFilters}
+              
+            />
+          </div>
+          )
         })}
         
       </div>

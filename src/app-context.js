@@ -128,11 +128,19 @@ export const AppContext = ({ children }) => {
     }
     LocalStorageUtils.setItem(DATA_SOURCE.JOB_APPLICANTS, jobsApplicantData)  
   }
-
-
   const getAllJobs = () => {
     return LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST);
   }
+
+  const getAllJobsByPage = (page,size) => {
+    const allJobs = getAllJobs();
+    const startIndex = page * size;
+    const endIndex = page * size + size;
+
+    return {data : allJobs.slice(startIndex,endIndex), page , size , totalPages : Math.ceil(allJobs/size)};
+  }
+
+  
 
   const postJobtoDb = (jobData) => {
     const jobs = LocalStorageUtils.getItem(DATA_SOURCE.JOBS_LIST)
@@ -193,6 +201,7 @@ export const AppContext = ({ children }) => {
         hasUserAppliedToJob,
         saveJobApplicationToDb,
         getAllJobs,
+        getAllJobsByPage,
         postJobtoDb,
         // jobs applicant data
         getJobApplicantNumber,
