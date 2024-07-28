@@ -28,6 +28,8 @@ import CandidateProfilePublic from "./pages/candidate-profile-public";
 
 const App = () => {
 
+  // console.log("🚀 ~ App ~ location:", location)
+
   const initData = () => {
     // LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
     // LocalStorageUtils.setItem(DATA_SOURCE.AUTH_DATA,loginInfo);

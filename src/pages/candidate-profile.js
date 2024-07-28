@@ -4,13 +4,10 @@ import "./styles.css";
 import { FILTERS_TYPE } from "../app-contants";
 import ButtonCustom from "../components/button-custom";
 import InputText from "../components/input-text";
-import { useParams } from "react-router-dom";
 import GithubProfileSection from "../components/github-profile-section";
 
 
 const CandidateProfile = () => {
-    let { cid } = useParams();
-    console.log("🚀 ~ CandidateProfile ~ cid:", cid)
 
   const { theme, filters, user, updateUserInfo, setToastConfig } = useAppContext();
   

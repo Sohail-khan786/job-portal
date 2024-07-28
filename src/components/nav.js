@@ -1,10 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppContext } from "../app-context";
-import { ROLE_TYPES, ROUTES } from "../app-contants";
+import { PROTECTED_ROUTES, ROLE_TYPES, ROUTES } from "../app-contants";
 
 const Nav = () => {
-  const { theme, toggleTheme, onLogout, user } = useAppContext();
+  const { theme, toggleTheme, onLogout, user, setToastConfig } = useAppContext();
+  const location = useLocation()
+  const navigate = useNavigate();
+
+
+  const checkPathProtection = (locationPassed) => {
+    const isPathProtected = PROTECTED_ROUTES.includes(locationPassed?.pathname)
+    console.log("🚀 ~ checkPathProtection ~ locationPassed?.pathname:", locationPassed?.pathname)
+    console.log("🚀 ~ checkPathProtection ~ isPathProtected:", isPathProtected)
+    if(isPathProtected && !user?.id){
+      setToastConfig({
+          isOpen: true,
+          text: "Please login to access this route",
+          bgColor: "red",
+          textColor: "white",
+        });
+        navigate(ROUTES.HOME)
+        return 
+    }
+  }
+
+  useEffect(() => {
+    checkPathProtection(location)
+  },[location])
+
   // console.log("🚀 ~ Nav ~ user:", user)
 
   const toggleMode = () => {

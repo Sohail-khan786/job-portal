@@ -5,16 +5,22 @@ export const ROLE_TYPES = {
 
 export const ROUTES = {
   HOME: "/",
-  RECRUITER_LOGIN: "/recruiter-login",
-  RECRUITER_PROFILE: "/recruiter/profile",
-  RECRUITER_JOB_DETAIL: "/recruiter/job-posted/:jobId",
-  RECRUITER_CANDIDATE_PROFILE_PREVIEW: "/recruiter/candidate/profile/:cid",
-  CANDIDATE_LOGIN: "/candidate-login",
-  CANDIDATE_JOBS: "/candidate/jobs",
-  CANDIDATE_PROFILE: "/candidate/profile",
-  ABOUT: "/about",
-  BLOG: "/blog",
+  RECRUITER_LOGIN: "/recruiter-login/",
+  RECRUITER_PROFILE: "/recruiter/profile/",
+  RECRUITER_JOB_DETAIL: "/recruiter/job-posted/:jobId/",
+  RECRUITER_CANDIDATE_PROFILE_PREVIEW: "/recruiter/candidate/profile/:cid/",
+  CANDIDATE_LOGIN: "/candidate-login/",
+  CANDIDATE_JOBS: "/candidate/jobs/",
+  CANDIDATE_PROFILE: "/candidate/profile/",
+  ABOUT: "/about/",
+  BLOG: "/blog/",
 };
+
+export const PROTECTED_ROUTES = [
+  ROUTES.RECRUITER_PROFILE , 
+  ROUTES.RECRUITER_JOB_DETAIL,
+  ROUTES.CANDIDATE_PROFILE
+]
 
 
 export const DATA_SOURCE = {
