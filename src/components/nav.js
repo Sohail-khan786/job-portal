@@ -5,7 +5,7 @@ import { ROLE_TYPES, ROUTES } from "../app-contants";
 
 const Nav = () => {
   const { theme, toggleTheme, onLogout, user } = useAppContext();
-  console.log("🚀 ~ Nav ~ user:", user)
+  // console.log("🚀 ~ Nav ~ user:", user)
 
   const toggleMode = () => {
     toggleTheme();

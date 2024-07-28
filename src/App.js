@@ -19,12 +19,14 @@ import Toast from "./components/toast";
 import { DATA_SOURCE, ROUTES } from "./app-contants";
 import { jobsList } from "./data/jobs-data";
 import { LocalStorageUtils } from "./local-storage-crud-utls";
+import { loginInfo } from "./data/auth-data";
 
 
 const App = () => {
 
   const initData = () => {
-    LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
+    // LocalStorageUtils.setItem(DATA_SOURCE.JOBS_LIST,jobsList);
+    // LocalStorageUtils.setItem(DATA_SOURCE.AUTH_DATA,loginInfo);
   }
 
   useEffect(()=>{

@@ -41,6 +41,7 @@ const SkillsFilter = ({
                                 <div key={filterItem} className="checkBoxInput" >
                                     <input
                                         type="checkbox"
+                                        onChange={()=>{}}
                                         checked={selectedSkills.includes(filterItem)}
                                         onClick={() => onFilterItemClick(filterItem)}
                                     /><span>{filterItem}</span>

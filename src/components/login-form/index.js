@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { loginInfo } from "../../data/auth-data";
+// import { loginInfo } from "../../data/auth-data";
 import { useAppContext } from "../../app-context";
 import { isValidEmail, isValidPassword } from "../../utils";
 import ButtonCustom from "../button-custom";
@@ -21,6 +21,7 @@ const LoginForm = ({
     if (!role) {
       return;
     }
+    const loginInfo = LocalStorageUtils.getItem(DATA_SOURCE.AUTH_DATA)
     const isUserFound = loginInfo.find((i) => {
       return i.email === email && i.password === password && i.role === role;
     });
