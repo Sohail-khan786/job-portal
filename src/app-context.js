@@ -89,6 +89,11 @@ export const AppContext = ({ children }) => {
     }) 
     LocalStorageUtils.setItem(DATA_SOURCE.AUTH_DATA, loginInfoUpdated)    
   }
+
+  const findUserById = (id) => {
+    const loginInfo = LocalStorageUtils.getItem(DATA_SOURCE.AUTH_DATA)
+    return [...loginInfo].find(u => u?.id == id)
+  }
   
   const onLogout = () => {
     setUser({})
@@ -157,6 +162,7 @@ export const AppContext = ({ children }) => {
         user,
         onLoginSuccess,
         updateUserInfo,
+        findUserById,
         onLogout,
         //jobs 
         getAppliedUser,

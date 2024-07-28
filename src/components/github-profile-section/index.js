@@ -3,6 +3,7 @@ import { useAppContext } from "../../app-context";
 
 
 const GithubProfileSection = ({
+    title = "List of all you Repos :",
     githubProfileLink = ""
 }) => {
 
@@ -57,7 +58,7 @@ const GithubProfileSection = ({
   return (
     <div>
       {(repos || []).length > 0 && <div>
-        <p>List of all you Repos : </p>
+        <p>{title} </p>
         <ul>
           {
             (repos || []).map(repo => {
