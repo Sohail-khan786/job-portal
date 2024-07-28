@@ -8,7 +8,8 @@ import { DATA_SOURCE } from "../app-contants";
 import { filterJobs } from "../components/filters/filter-utils";
 
 const CandidateJobs = () => {
-  const { theme, filters, setToastConfig } = useAppContext();
+  const { theme, filters, setToastConfig, user } = useAppContext();
+  console.log("🚀 ~ CandidateJobs ~ user:", user)
   const { appliedFilters } = filters || {}; 
   console.log(filters)
   const [jobs,setJobs] = useState([])

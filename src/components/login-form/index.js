@@ -12,7 +12,7 @@ const LoginForm = ({
   onLoginSuccessCb = () => {},
   onLoginFailedCb = () => {},
 }) => {
-  const { theme, setToastConfig } = useAppContext();
+  const { theme, setToastConfig, onLoginSuccess, onLogout } = useAppContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const LoginForm = ({
     });
 
     if (!isUserFound) {
-      console.log("User Not Found Error");
+      onLogout()
       onLoginFailedCb();
       setToastConfig((prev) => {
         return {
@@ -37,6 +37,7 @@ const LoginForm = ({
         };
       });
     } else {
+      onLoginSuccess(isUserFound);
       onLoginSuccessCb();
       setToastConfig((prev) => {
         return {

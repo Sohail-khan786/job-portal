@@ -19,6 +19,10 @@ export const AppContext = ({ children }) => {
     appliedFilters : []
   });
 
+  const [user, setUser] = useState({
+  });
+
+  // filters
   const updateAppliedFilters = (filterData) => {
     let appliedFiltersUpdated = [...(filters?.appliedFilters || [])].filter(i => i.filterType !== filterData?.filterType);
     appliedFiltersUpdated.push(filterData);
@@ -40,8 +44,18 @@ export const AppContext = ({ children }) => {
     })
   }
 
+  //Login
+  const onLoginSuccess = (userData) => {
+    setUser({ ...userData , password : "" })
+  }
+  
+  const onLogout = () => {
+    setUser({})
+  }
+
   
 
+  // theme
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
@@ -62,7 +76,11 @@ export const AppContext = ({ children }) => {
         // filters
         filters, 
         updateAppliedFilters, 
-        removeAppliedFilters 
+        removeAppliedFilters,
+        //Login
+        user,
+        onLoginSuccess,
+        onLogout
       }}>
       {children}
       <Toast
