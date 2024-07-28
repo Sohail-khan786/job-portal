@@ -1,5 +1,5 @@
 .toastStyle {
-  position: absolute;
+  position: fixed;
   bottom: 10%;
   left: 20px;
   width: fit-content;

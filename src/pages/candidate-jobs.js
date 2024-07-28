@@ -25,6 +25,16 @@ const CandidateJobs = () => {
 
   const onApplyClick = (jobDetails) => {
     const isAlreadyApplied =  hasUserAppliedToJob(user?.id ,jobDetails?.jobId)
+
+    if(!user?.id){
+      setToastConfig({
+          isOpen: true,
+          text: "Login to apply for Job",
+          bgColor: "red",
+          textColor: "white",
+        });
+        return 
+    }
     
     if(isAlreadyApplied){
       setToastConfig({
